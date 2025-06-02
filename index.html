@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Persígueme!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #091c8d, #8d13b3, #cb19db, #0ad6dd);
+            background-size: 400% 400%;
+            animation: moverFondo 10s ease-in-out infinite;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes moverFondo {
+            0% {
+                background-position: 0% 40%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 40%;
+            }
+        }
+
+        #mensaje {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(162, 28, 252);
+            color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 10px 15px 6px black;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 5;
+        }
+
+        #boton {
+            position: fixed; /* Cambiado de absolute a fixed */
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #8b61ff, #ff8566);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            left: 50%; /* Posición inicial centrada */
+            top: 60%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            
+        }
+
+        #boton:hover {
+            transform: scale(1.2);
+            background: linear-gradient(135deg, #230fda, #d609aa);
+        }
+
+        @media (max-width: 600px) {
+            #boton {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+            #mensaje {
+                font-size: 16px;
+                padding: 15px 10px;
+            }
+        }
+
+        #ojos {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+        .ojo {
+            width: 32px;
+            height: 32px;
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pupila {
+            width: 12px;
+            height: 12px;
+            background: #222;
+            border-radius: 50%;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            transition: left 0.1s, top 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="mensaje">
+        <div id="ojos">
+            <div class="ojo"><div class="pupila"></div></div>
+            <div class="ojo"><div class="pupila"></div></div>
+        </div>
+        Oh.. Quieres ver la sorpresa???
+    </div>
+    <button id="boton">¡Haz clic aquí!</button>
+
+    <script>
+        const boton = document.getElementById('boton');
+        const mensaje = document.getElementById('mensaje');
+        const ojos = document.querySelectorAll('.ojo');
+        const pupilas = document.querySelectorAll('.pupila');
+        let movimientos = 0;
+
+        // Función para verificar colisión entre dos rectángulos
+        function colisiona(rect1, rect2) {
+            return !(
+                rect1.right < rect2.left ||
+                rect1.left > rect2.right ||
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom
+            );
+        }
+
+        // Función para mover el botón a una posición aleatoria sin superponerse al mensaje
+        function moverBoton() {
+            if (movimientos < 12) {
+                const anchoVentana = window.innerWidth;
+                const altoVentana = window.innerHeight;
+                const margen = 10;
+
+                const botonRect = boton.getBoundingClientRect();
+                const botonAncho = botonRect.width;
+                const botonAlto = botonRect.height;
+
+                const mensajeRect = mensaje.getBoundingClientRect();
+
+                const maxX = anchoVentana - botonAncho - margen;
+                const maxY = altoVentana - botonAlto - margen;
+
+                let nuevoX, nuevoY, intentos = 0, maxIntentos = 200;
+                let botonNuevoRect = {};
+
+                do {
+                    nuevoX = Math.random() * (maxX - margen) + margen;
+                    nuevoY = Math.random() * (maxY - margen) + margen;
+                    botonNuevoRect = {
+                        left: nuevoX,
+                        top: nuevoY,
+                        right: nuevoX + botonAncho,
+                        bottom: nuevoY + botonAlto
+                    };
+                    intentos++;
+                    // Si no hay suficiente espacio, rompe el bucle para evitar bloqueo
+                    if (intentos > maxIntentos) break;
+                } while (
+                    colisiona(botonNuevoRect, mensajeRect)
+                );
+
+                boton.style.left = `${nuevoX}px`;
+                boton.style.top = `${nuevoY}px`;
+                boton.style.transform = "none";
+
+                if (movimientos > 0) {
+                    const mensajes = [
+                        "Uy, casi! >:) ",
+                        "jeje ,ahora sí dale 😏!",
+                        "Casiii!",
+                        "Eso es todo ???",
+                        "Uyuyuy",
+                        "buajajja",
+                        "Pero quieres darle ya ??",
+                        "jeje , no tan rápido!",
+                        "¡Eres persistente!",
+                        "¿Te estás divirtiendo?",
+                        "¡Ya casi lo logras!",
+                        "¡Un poco más!"
+                    ];
+                    mensaje.childNodes[mensaje.childNodes.length - 1].textContent = mensajes[Math.floor(Math.random() * mensajes.length)];
+                }
+
+                movimientos++;
+                moverPupilas();
+            } else {
+                mensaje.childNodes[mensaje.childNodes.length - 1].textContent = "¡jeje , me pillaste!";
+                boton.removeEventListener('mouseover', moverBoton);
+            }
+        }
+
+        // Mueve las pupilas hacia el botón
+        function moverPupilas() {
+            const botonRect = boton.getBoundingClientRect();
+            const mensajeRect = mensaje.getBoundingClientRect();
+            const ojosRect = ojos[0].parentElement.getBoundingClientRect();
+
+            // Coordenadas del centro del botón
+            const botonCentroX = botonRect.left + botonRect.width / 2;
+            const botonCentroY = botonRect.top + botonRect.height / 2;
+
+            ojos.forEach((ojo, i) => {
+                const ojoRect = ojo.getBoundingClientRect();
+                const ojoCentroX = ojoRect.left + ojoRect.width / 2;
+                const ojoCentroY = ojoRect.top + ojoRect.height / 2;
+
+                // Vector desde el ojo al botón
+                let dx = botonCentroX - ojoCentroX;
+                let dy = botonCentroY - ojoCentroY;
+
+                // Limitar el movimiento de la pupila
+                const maxDist = 8;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist > maxDist) {
+                    dx = dx * maxDist / dist;
+                    dy = dy * maxDist / dist;
+                }
+
+                pupilas[i].style.left = `${10 + dx}px`;
+                pupilas[i].style.top = `${10 + dy}px`;
+            });
+        }
+
+        boton.addEventListener('mouseover', moverBoton);
+        boton.addEventListener('click', () => {
+            mensaje.childNodes[mensaje.childNodes.length - 1].textContent = '¡Redirigiendo a la cumpleañera 😆...';
+            setTimeout(() => {
+                window.location.href = 'tarjeta.html';
+            }, 1000);
+        });
+        boton.addEventListener('touchstart', function(e) {
+            moverBoton();
+            e.preventDefault();
+        });
+
+        // Centrar el botón al cargar y mover pupilas
+        window.onload = () => {
+            const anchoVentana = window.innerWidth;
+            const altoVentana = window.innerHeight;
+            const margen = 10;
+
+            const botonRect = boton.getBoundingClientRect();
+            const botonAncho = botonRect.width;
+            const botonAlto = botonRect.height;
+
+            const mensajeRect = mensaje.getBoundingClientRect();
+
+            const maxX = anchoVentana - botonAncho - margen;
+            const maxY = altoVentana - botonAlto - margen;
+
+            let nuevoX, nuevoY, intentos = 0, maxIntentos = 200;
+            let botonNuevoRect = {};
+
+            do {
+                nuevoX = Math.random() * (maxX - margen) + margen;
+                nuevoY = Math.random() * (maxY - margen) + margen;
+                botonNuevoRect = {
+                    left: nuevoX,
+                    top: nuevoY,
+                    right: nuevoX + botonAncho,
+                    bottom: nuevoY + botonAlto
+                };
+                intentos++;
+                if (intentos > maxIntentos) break;
+            } while (
+                colisiona(botonNuevoRect, mensajeRect)
+            );
+
+            boton.style.left = `${nuevoX}px`;
+            boton.style.top = `${nuevoY}px`;
+            boton.style.transform = "none";
+            moverPupilas();
+        };
+
+        // Mueve las pupilas si la ventana cambia de tamaño
+        window.addEventListener('resize', moverPupilas);
+    </script>
+</body>
+</html>
