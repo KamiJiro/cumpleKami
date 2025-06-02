@@ -1,18 +1,18 @@
-# 🎉 ¡Feliz Cumpleaños! 🎂
+# 🎉 ¡Feliz Cumpleaños, Eider! 🎂
 
-¡Bienvenido/a a este repositorio especial de cumpleaños! 🥳  
-Aquí celebramos otro año más de vida con alegría, gratitud y buenos deseos.
+¡Bienvenida a este repositorio especial de cumpleaños, Eider! 🥳  
+Hoy celebramos tu día, **21 de abril**, con mucha alegría, amor y agradecimiento por tenerte en nuestras vidas.
 
-Este proyecto es una pequeña sorpresa digital para conmemorar este día tan especial.  
-Ya sea para ti, para un amigo o un ser querido, ¡esperamos que les saque una sonrisa!
+Este proyecto es una pequeña sorpresa digital hecha con cariño para conmemorar tu cumpleaños.  
+¡Espero que te saque una sonrisa y te recuerde cuánto significas!
 
 ---
 
 ## 🎈 ¿Qué hay aquí?
 
-- Un mensaje de cumpleaños personalizado 🎁  
-- Detalles especiales o recuerdos 🧸  
-- Enlace sorpresa (¡añádelo tú mismo más abajo! 👇)
+- Un mensaje de cumpleaños personalizado solo para ti 🎁  
+- Detalles especiales y recuerdos que valen oro 🧸  
+- Una **sorpresa digital** lista para ti 👇
 
 ---
 
@@ -22,15 +22,18 @@ Ya sea para ti, para un amigo o un ser querido, ¡esperamos que les saque una so
 
 ---
 
-## 💡 Cómo usar este repositorio
+## 💡 Cómo se hizo este regalo
 
-1. Clona este repositorio o descárgalo como .zip.
-2. Personaliza los archivos con tu propio contenido (texto, imágenes, videos).
-3. Comparte el enlace con quien quieras sorprender.
+1. Fue creado con muchísimo cariño ❤️  
+2. Pensando en ti y en lo especial que eres 🌟  
+3. Y deseando que este nuevo año te traiga solo cosas hermosas ✨
 
 ---
 
 ## 📬 Créditos y agradecimientos
 
-Este repositorio fue creado con cariño y buenos deseos para hacer del mundo un lugar un poquito más feliz.  
-¡Gracias por pasar por aquí y feliz cumpleaños nuevamente! 🎊
+Este repositorio fue creado por alguien que te quiere mucho 💌  
+y que quiso hacerte un regalo diferente, digital, pero lleno de emoción.
+
+**¡Feliz cumpleaños, Eider!**  
+Que todos tus sueños se hagan realidad 🎊
