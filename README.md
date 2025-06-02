@@ -20,8 +20,6 @@ Ya sea para ti, para un amigo o un ser querido, ¡esperamos que les saque una so
 
 [Haz clic aquí para ver tu sorpresa de cumpleaños](https://kamijiro.github.io/cumpleKami/)
 
-> Reemplaza `AQUI_VA_TU_ENLACE` con tu enlace personalizado (puede ser un video, una carta digital, una animación, etc.)
-
 ---
 
 ## 💡 Cómo usar este repositorio
